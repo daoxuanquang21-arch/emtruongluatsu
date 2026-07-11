@@ -300,22 +300,37 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
       submitBtn.innerHTML = 'Đang tiếp nhận thông tin... ⏳';
       
-      setTimeout(() => {
-        // Build message payload
-        const packageLabels = {
-          basics: 'Thành lập công ty - Gói Cơ Bản (699k)',
-          household: 'Đăng ký Hộ Kinh Doanh (999k)',
-          startup: 'Thành lập công ty - Gói Khởi Nghiệp (2.999k)',
-          change: 'Thay đổi nội dung ĐKKD',
-          suspend: 'Tạm ngừng hoạt động doanh nghiệp',
-          dissolve: 'Giải thể doanh nghiệp'
-        };
+      const packageLabels = {
+        basics: 'Thành lập công ty - Gói Cơ Bản (699k)',
+        household: 'Đăng ký Hộ Kinh Doanh (999k)',
+        startup: 'Thành lập công ty - Gói Khởi Nghiệp (2.999k)',
+        change: 'Thay đổi nội dung ĐKKD',
+        suspend: 'Tạm ngừng hoạt động doanh nghiệp',
+        dissolve: 'Giải thể doanh nghiệp'
+      };
+      
+      const selectedLabel = packageLabels[selectedPkg] || selectedPkg;
+
+      fetch("https://formsubmit.co/ajax/Truongquoc.law@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          "Họ và tên": name,
+          "Số điện thoại Zalo": phone,
+          "Email": email,
+          "Dịch vụ đăng ký": selectedLabel,
+          "Số lượng": qty,
+          "Chi tiết yêu cầu": note
+        })
+      })
+      .then(response => {
+        submitBtn.innerHTML = 'Đăng ký thành công! ✓';
         
-        const selectedLabel = packageLabels[selectedPkg] || selectedPkg;
         const msgText = `Chào Trường Quốc - Trợ Lý Pháp Lý, tôi tên là ${name}. SĐT Zalo: ${phone}. Email: ${email}. Có nhu cầu đăng ký dịch vụ: ${selectedLabel} (Số lượng: ${qty} DN). Ghi chú yêu cầu: ${note}`;
         const encodedMsg = encodeURIComponent(msgText);
-        
-        submitBtn.innerHTML = 'Đăng ký thành công! ✓';
         
         // Show interactive modal
         const modal = document.createElement('div');
@@ -336,14 +351,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
             <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main);">GỬI YÊU CẦU THÀNH CÔNG!</h3>
             <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
-              Chuyên viên tư vấn pháp lý Trường Quốc - Trợ Lý Pháp Lý đã nhận được thông tin. Để được hỗ trợ trả lời giải đáp thắc mắc 1-1 trực tiếp qua Zalo ngay lập tức, bạn hãy bấm nút chat Zalo bên dưới.
+              Yêu cầu của bạn đã được gửi thành công đến Email của Trợ Lý Pháp Lý Trường Quốc. Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất. Để được hỗ trợ chat 1-1 trực tiếp qua Zalo ngay lập tức, bạn hãy bấm nút bên dưới.
             </p>
             <div style="display: flex; flex-direction: column; gap: 0.75rem;">
               <a href="https://zalo.me/0335223015?text=${encodedMsg}" target="_blank" class="btn btn-blue" style="width: 100%;">
                 💬 Chat Trực Tiếp Zalo Của Luật Sư
               </a>
               <button id="close-modal" class="btn" style="background: #E2E8F0; color: var(--text-main); font-size: 0.95rem;">
-                Hoàn thành (Đợi qua Email)
+                Hoàn thành
               </button>
             </div>
           </div>
@@ -356,10 +371,14 @@ document.addEventListener('DOMContentLoaded', () => {
           contactForm.reset();
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
-          // Fallback redirect to email client
-          window.location.href = `mailto:Truongquoc.law@gmail.com?subject=Yêu cầu dịch vụ pháp lý từ ${name}&body=${msgText}`;
         });
-      }, 1200);
+      })
+      .catch(err => {
+        console.error("Error sending form:", err);
+        alert("Đã có lỗi xảy ra khi gửi thông tin qua Email. Xin vui lòng liên hệ trực tiếp qua Zalo: 0335223015 để được hỗ trợ nhanh nhất!");
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      });
     });
   }
 
