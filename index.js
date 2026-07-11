@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch(err => {
         console.error("Error sending form:", err);
-        alert("Đã có lỗi xảy ra khi gửi thông tin qua Email. Xin vui lòng liên hệ trực tiếp qua Zalo: 0335223015 để được hỗ trợ nhanh nhất!");
+        alert("Đã có lỗi xảy ra khi gửi thông tin qua Email. Xin vui lòng liên hệ trực tiếp qua Zalo: 0335.223.015 để được hỗ trợ nhanh nhất!");
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
       });
