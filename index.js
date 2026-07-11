@@ -207,51 +207,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-  // --- 4.6. Footer Links navigation and Tab switcher ---
+  // --- 4.6. Footer Links navigation ---
   const footerLinks = document.querySelectorAll('.footer-links a[data-footer-pkg]');
   footerLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const pkg = link.dataset.footerPkg;
-      const isChangePkg = ['change', 'suspend', 'dissolve'].includes(pkg);
       
-      // Determine tab target
-      const tabTarget = isChangePkg ? 'change-packages' : 'startup-packages';
-      const activeTabBtn = document.querySelector(`.pricing-tab-btn[data-package="${tabTarget}"]`);
-      
-      if (activeTabBtn && !activeTabBtn.classList.contains('active')) {
-        // Toggle tabs
-        packageTabBtns.forEach(b => b.classList.remove('active'));
-        activeTabBtn.classList.add('active');
-        
-        if (isChangePkg) {
-          startupGrid.style.display = 'none';
-          changeGrid.style.display = 'grid';
-        } else {
-          startupGrid.style.display = 'grid';
-          changeGrid.style.display = 'none';
-        }
+      // Select package in dropdown
+      if (packageSelect) {
+        packageSelect.value = pkg;
+        calculateServices();
       }
       
-      // Scroll to pricing section
-      const pricingSection = document.getElementById('pricing');
-      if (pricingSection) {
+      // Scroll to form section
+      const targetSection = document.querySelector('.contact-card');
+      if (targetSection) {
         e.preventDefault();
-        pricingSection.scrollIntoView({ behavior: 'smooth' });
-        
-        // Optional: highlight the specific card if found
-        setTimeout(() => {
-          const card = document.querySelector(`.pricing-card[data-package="${pkg}"]`);
-          if (card) {
-            card.style.transform = 'scale(1.03)';
-            card.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease';
-            card.style.boxShadow = '0 20px 25px -5px rgba(59, 130, 246, 0.4)';
-            setTimeout(() => {
-              card.style.transform = '';
-              card.style.boxShadow = '';
-            }, 2000);
-          }
-        }, 600);
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
