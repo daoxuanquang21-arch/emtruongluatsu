@@ -356,6 +356,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- 8. Smooth scroll for all anchor links and prevent URL hash update ---
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  anchorLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
   // --- 7. Lightbox for Feedback Images ---
   window.openLightbox = function(src) {
     const lightbox = document.getElementById('feedback-lightbox');
