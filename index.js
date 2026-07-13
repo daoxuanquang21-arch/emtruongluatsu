@@ -292,6 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
+          "_subject": `Khách hàng mới: ${name} - Đăng ký ${selectedLabel}`,
           "Họ và tên": name,
           "Số điện thoại Zalo": phone,
           "Email": email,
