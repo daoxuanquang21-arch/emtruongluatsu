@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- 4.5. Dynamic Package Selection from CTA Click ---
-  const ctaLinks = document.querySelectorAll('a[href="#register"], a[href="#translation-form"]');
+  const ctaLinks = document.querySelectorAll('a[href="#contact-form-section"], a[href="#translation-form"]');
   ctaLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const card = link.closest('.pricing-card');
@@ -360,6 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const anchorLinks = document.querySelectorAll('a[href^="#"]');
   anchorLinks.forEach(link => {
     link.addEventListener('click', (e) => {
+      if (e.defaultPrevented) return;
       const targetId = link.getAttribute('href');
       if (targetId === '#') return;
       
