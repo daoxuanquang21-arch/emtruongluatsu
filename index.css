@@ -1553,7 +1553,7 @@ footer {
 
 .calculator-results-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
   border-top: 1px dashed var(--accent-blue-border);
   padding-top: 1.25rem;

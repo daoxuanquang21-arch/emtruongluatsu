@@ -129,7 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
     calcTime.style.color = selectedPkg === 'dissolve' ? 'var(--accent-red)' : 'var(--accent-blue)';
     
     const bonusVal = bonusValues[selectedPkg] || 0;
-    calcBonusVal.textContent = bonusVal === 0 ? 'Tư vấn miễn phí' : bonusVal.toLocaleString('vi-VN') + ' đ';
+    if (calcBonusVal) {
+      calcBonusVal.textContent = bonusVal === 0 ? 'Tư vấn miễn phí' : bonusVal.toLocaleString('vi-VN') + ' đ';
+    }
   }
 
   if (packageSelect) {
