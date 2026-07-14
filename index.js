@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const packageLabels = {
         basics: 'Thành lập công ty - Gói Doanh Nghiệp 1 (699k)',
-        household: 'Gói Hộ Kinh Doanh (999k)',
+        household: 'Trọn gói Hộ Kinh Doanh (999k)',
         startup: 'Thành lập công ty - Gói Doanh Nghiệp 2 (2.999k)',
         change: 'Thay đổi nội dung ĐKKD',
         suspend: 'Tạm ngừng hoạt động doanh nghiệp',
