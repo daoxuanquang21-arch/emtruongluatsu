@@ -275,9 +275,9 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.innerHTML = 'Đang tiếp nhận thông tin... ⏳';
       
       const packageLabels = {
-        basics: 'Thành lập công ty - Gói Cơ Bản (699k)',
-        household: 'Đăng ký Hộ Kinh Doanh (999k)',
-        startup: 'Thành lập công ty - Gói Khởi Nghiệp (2.999k)',
+        basics: 'Thành lập công ty - Gói Doanh Nghiệp 1 (699k)',
+        household: 'Gói Hộ Kinh Doanh (999k)',
+        startup: 'Thành lập công ty - Gói Doanh Nghiệp 2 (2.999k)',
         change: 'Thay đổi nội dung ĐKKD',
         suspend: 'Tạm ngừng hoạt động doanh nghiệp',
         dissolve: 'Giải thể doanh nghiệp'
