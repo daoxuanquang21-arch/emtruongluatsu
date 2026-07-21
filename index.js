@@ -391,4 +391,49 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = 'auto'; // Enable scroll
     }
   };
+
+  // --- 9. Policy & Terms Modals (Google Ads Compliance) ---
+  window.openPrivacyModal = function() {
+    const modal = document.getElementById('privacy-modal');
+    if (modal) {
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closePrivacyModal = function() {
+    const modal = document.getElementById('privacy-modal');
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  };
+
+  window.openTermsModal = function() {
+    const modal = document.getElementById('terms-modal');
+    if (modal) {
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeTermsModal = function() {
+    const modal = document.getElementById('terms-modal');
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  };
+
+  // Close modals when clicking outside modal-content
+  window.addEventListener('click', function(e) {
+    const privacyModal = document.getElementById('privacy-modal');
+    const termsModal = document.getElementById('terms-modal');
+    if (e.target === privacyModal) {
+      closePrivacyModal();
+    }
+    if (e.target === termsModal) {
+      closeTermsModal();
+    }
+  });
 });

@@ -1756,3 +1756,105 @@ footer {
   }
 
 }
+
+/* --- Google Ads Compliance: Disclaimer Box & Policy Modals --- */
+.footer-disclaimer-box {
+  background-color: #1E293B;
+  border: 1px solid #334155;
+  border-left: 4px solid #38BDF8;
+  border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  color: #94A3B8;
+  font-size: 0.825rem;
+  line-height: 1.6;
+}
+
+.footer-disclaimer-box .disclaimer-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #F8FAFC;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-disclaimer-box p {
+  margin-bottom: 0.5rem;
+}
+
+.footer-disclaimer-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* Policy Modals */
+.policy-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.policy-modal-content {
+  background-color: #1E293B;
+  color: #E2E8F0;
+  margin: 5% auto;
+  padding: 2.5rem;
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 750px;
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  line-height: 1.7;
+}
+
+.policy-modal-content h2 {
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.policy-modal-content .modal-updated {
+  color: #94A3B8;
+  font-size: 0.85rem;
+}
+
+.policy-modal-content h3 {
+  color: #38BDF8;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.policy-modal-content p, .policy-modal-content ul {
+  color: #CBD5E1;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.policy-modal-content ul {
+  padding-left: 1.5rem;
+}
+
+.policy-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  color: #94A3B8;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.policy-modal-close:hover {
+  color: #FFFFFF;
+}
+
